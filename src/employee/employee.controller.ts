@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
 import { EmployeeService } from "./employee.service";
-import { EmailParam } from "src/decorator/email.decorator";
+import { EmailParam } from "src/common/decorator/email.decorator";
+import { AuthenticationGuard } from "src/common/guard/authentication.guard";
 
 @Controller("/employee")
 export class EmployeeController{
@@ -29,6 +30,7 @@ export class EmployeeController{
     }
 
     @Post()
+    @UseGuards(AuthenticationGuard)
     createEmployee(@Body() body:any)
     {
         return this.employeeService.createEmployee(body);
