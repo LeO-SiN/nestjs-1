@@ -24,8 +24,8 @@ export class EmployeeController {
   }
 
   @Get(':id')
-  // @UsePipes(IntegerPipe)
-  getEmployeeById(@Param('id', ParseIntPipe) id: number) {   
+  @UsePipes(IntegerPipe)
+  getEmployeeById(@Param('id') id: number) {   
     return this.employeeService.getEmployeeById(id);
   }
   
