@@ -30,11 +30,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-<<<<<<< HEAD
-    //consumer.apply(Middleware1).forRoutes('*');
-=======
-    // consumer.apply(Middleware1).forRoutes('*');
->>>>>>> 6d16d89a57dda5867c39683052404ac0a88dabb5
+    consumer.apply(Middleware1).forRoutes('*');
     // .apply(Middleware2)
     // .forRoutes({path:'employee',method: RequestMethod.GET})
   }
