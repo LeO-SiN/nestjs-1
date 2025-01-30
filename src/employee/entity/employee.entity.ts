@@ -1,16 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('info')
-export class Employee{
-    @PrimaryGeneratedColumn()
-    id: number
+@Entity('employee')
+export class Employee {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    name: string
-    
-    @Column()
-    email: string
+  @Column()
+  name: string;
 
-    @Column({default: false})
-    statusDelete: boolean
+  @Column()
+  email: string;
+
+  @Column({ default: false })
+  statusDelete: boolean;
 }

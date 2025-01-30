@@ -1,15 +1,12 @@
-import { Module } from "@nestjs/common";
-import { EmployeeController } from "./employee.controller";
-import { EmployeeService } from "./employee.service";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { Employee } from "./entity/employee.entity";
-import { AuthenticationGuard } from "src/common/guard/authentication.guard";
-import { GuardModule } from "src/common/guard/guard.module";
-
+import { Module } from '@nestjs/common';
+import { EmployeeController } from './employee.controller';
+import { EmployeeService } from './employee.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Employee } from './entity/employee.entity';
 
 @Module({
-    imports:[TypeOrmModule.forFeature([Employee]), GuardModule],
-    controllers:[EmployeeController],
-    providers:[EmployeeService]
+  imports: [TypeOrmModule.forFeature([Employee])],
+  controllers: [EmployeeController],
+  providers: [EmployeeService],
 })
-export class EmployeeModule{}
+export class EmployeeModule {}

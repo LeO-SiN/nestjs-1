@@ -1,43 +1,48 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
-import { EmployeeService } from "./employee.service";
-import { EmailParam } from "src/common/decorator/email.decorator";
-import { AuthenticationGuard } from "src/common/guard/authentication.guard";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
+import { EmployeeService } from './employee.service';
+import { EmailParam } from 'src/common/decorator/email.decorator';
+import { AuthenticationGuard } from 'src/common/guard/authentication.guard';
 
-@Controller("/employee")
-export class EmployeeController{
-    constructor(private employeeService:EmployeeService){}
-    @Get()    
-    getAllEmployee(){
-        console.log("Controller");
-        
-        return this.employeeService.getAllEmployee();
-    }
+@Controller('employee')
+export class EmployeeController {
+  constructor(private employeeService: EmployeeService) {}
+  @Get()
+  getAllEmployee() {
+    return this.employeeService.getAllEmployee();
+  }
 
-    @Get(":id")
-    getEmployeeById(@Param("id") id:string){
-        return this.employeeService.getEmployeeById(parseInt(id));
-    }
+  @Get(':id')
+  getEmployeeById(@Param('id') id: string) {
+    return this.employeeService.getEmployeeById(parseInt(id));
+  }
 
-    @Get("search/:email")
-    getEmployeeByEmail(@EmailParam() email: string){
-        return this.employeeService.getEmployeeByEmail(email);
-    }
-    
-    
-    @Delete(":id")
-    deleteEmployeeById(@Param("id") id:string){
-        return this.employeeService.deleteEmployeeById(parseInt(id));
-    }
+  @Get('search/:email')
+  getEmployeeByEmail(@EmailParam() email: string) {
+    return this.employeeService.getEmployeeByEmail(email);
+  }
 
-    @Post()
-    @UseGuards(AuthenticationGuard)
-    createEmployee(@Body() body:any)
-    {
-        return this.employeeService.createEmployee(body);
-    }
+  @Delete(':id')
+  deleteEmployeeById(@Param('id') id: string) {
+    return this.employeeService.deleteEmployeeById(parseInt(id));
+  }
 
-    @Patch(":id")
-    updateEmployeeById(@Param("id") id: string,@Body() body:any){
-        return this.employeeService.updateEmployeeById(parseInt(id),body);
-    }
+  @Post()
+  @UseGuards(AuthenticationGuard)
+  createEmployee(@Body() body: any) {
+    return this.employeeService.createEmployee(body);
+  }
+
+  @Patch(':id')
+  updateEmployeeById(@Param('id') id: string, @Body() body: any) {
+    return this.employeeService.updateEmployeeById(parseInt(id), body);
+  }
 }
