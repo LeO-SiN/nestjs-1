@@ -5,7 +5,7 @@ import { LoggingInterceptor } from './common/interceptor/loggin.interceptor';
 async function start() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');
-  app.useGlobalInterceptors(new LoggingInterceptor)
+  // app.useGlobalInterceptors(new LoggingInterceptor)
   await app.listen(3000);
 }
 
